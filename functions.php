@@ -4,7 +4,7 @@
 //Ela recebe um objeto aluno e o ponteiro pro começo do banco,  busca no
 // banco e se encontrar, gera um array de e-mails e retorna esse array
 function geraEmail($aluno, $ponteiro){
-
+	$auxiliar = $ponteiro;
 	$nomes = explode(" ", $aluno->nome); 
 	$ok = FALSE;
 	$contador = 1;
@@ -12,13 +12,17 @@ function geraEmail($aluno, $ponteiro){
     //Opção 1 Primeira letra (ou mais) do primeiro nome + ultimo nome
 	while(!$ok){
 		$novo = substr($nomes[0], 0, $contador).$nomes[2].'@id.uff.br';
+		
 		if($ponteiro->existeUffm($novo)){
+			
 			$contador++;
+			$auxiliar = $ponteiro;
 		}
 		else{
 			$contador = 1;
 			$ok = true;
 			$lista[] = $novo;
+			$auxiliar = $ponteiro;
 		}
 	}
 	$ok = FALSE;
@@ -29,12 +33,14 @@ function geraEmail($aluno, $ponteiro){
 		if($ponteiro->existeUffm($novo)){
 			$novo = $novo.$contador;
 			$contador++;
+			$auxiliar = $ponteiro;
 		}
 		else{
 			$novo = $novo.'@id.uff.br';
 			$contador = 1;
 			$ok = true;
 			$lista[] = $novo;
+			$auxiliar = $ponteiro;
 		}
 	}
 	$ok= FALSE;
