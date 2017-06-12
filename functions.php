@@ -64,11 +64,8 @@ function geraEmail($aluno, $ponteiro){
 // teremos aqui uma fuñção que recebe um array de e-mail e gera o HTML com os radio buttons
 
 function listaDinamica($lista){
-
+	
 	for($i=0; $i<count($lista); $i++){
-		echo '<input type= "radio"name ="uffm" value="'.$lista[$i].'">'.$lista[$i].'<br>';
+		echo  '<input type="radio" id="opcao'.$i.'" name ="uffm" value="'.$lista[$i].'"><label for="opcao'.$i.'"><fieldset>'.$lista[$i].'</fieldset></label>';
 	}
-
 }
-
-//Teremos uma função que dará  update no csv caso tenha havido escolha do email 
